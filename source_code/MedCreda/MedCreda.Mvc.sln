@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedCreda.Mvc", "MedCreda.Mvc\MedCreda.Mvc.csproj", "{F61F6AB8-607A-412E-B0AC-21D8C8CB9208}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedCreda.Business", "MedCreda.Business\MedCreda.Business.csproj", "{6F982043-66BF-47F8-BF55-43124DF41AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedCreda.WebApi", "MedCreda.WebApi\MedCreda.WebApi.csproj", "{E85A55FD-C7F8-4523-AB4C-4817CFBFC68B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F61F6AB8-607A-412E-B0AC-21D8C8CB9208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F61F6AB8-607A-412E-B0AC-21D8C8CB9208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F61F6AB8-607A-412E-B0AC-21D8C8CB9208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F61F6AB8-607A-412E-B0AC-21D8C8CB9208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F982043-66BF-47F8-BF55-43124DF41AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F982043-66BF-47F8-BF55-43124DF41AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F982043-66BF-47F8-BF55-43124DF41AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F982043-66BF-47F8-BF55-43124DF41AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E85A55FD-C7F8-4523-AB4C-4817CFBFC68B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E85A55FD-C7F8-4523-AB4C-4817CFBFC68B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E85A55FD-C7F8-4523-AB4C-4817CFBFC68B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E85A55FD-C7F8-4523-AB4C-4817CFBFC68B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

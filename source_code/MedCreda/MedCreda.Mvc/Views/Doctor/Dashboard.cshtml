@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "/Views/Shared/_LayoutDoctor.cshtml";
+}
+
+@*<div class="container">
+        <h2>Dashboard</h2>
+    </div>*@
+
+
+<link href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.7.2/fullcalendar.min.css" rel="stylesheet" />
+<link href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.7.2/fullcalendar.print.css" rel="stylesheet" />
+
+<div class="">
+    <div class="row">
+        <div class="col s3">
+            <div class="card blue-grey darken-1" style="height:650px;">
+                <div class="card-content white-text" style="text-align:center;">
+                    <div class="row">
+                        @*<img src="~/images/slider2doctor.png" height="25" width="25" />*@
+                        <img src="~/images/happy-smiling-female-doctor.jpg" height="150" width="150" style="border-radius:50%;" />
+                    </div>
+                    <div class="row">
+                        <span class="card-title" style="text-align:center;">Dr. John Doe</span>
+                        <p>Surgeon</p>
+                        <p>I'm good at curing anything!</p>
+                    </div>
+                </div>
+                @*<div class="card-action">
+                        <a href="#">This is a link</a>
+                        <a href="#">This is a link</a>
+                    </div>
+                    <div class="card-action">
+                        <div id="calendar"></div>
+                    </div>*@
+            </div>
+        </div>
+
+        <div id="divPresentation" class="col s9">
+            <div class="row">
+                <div class="col s12" id="divVideoConference">
+					@Html.Partial("_VideoConference")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>A patient wants to call you</h4>
+        <div style="text-align:center;">
+            <div class="row">
+                <img src="~/images/happy-smiling-female-doctor.jpg" height="150" width="150" style="border-radius:50%;" />
+            </div>
+            <div class="row">
+                <p>John Doe is calling...</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" id="btnAcceptPatientCall" class="modal-action modal-close waves-effect waves-light green btn">Accept</a>
+        <a href="#" class="modal-action modal-close waves-effect waves-light red btn">Decline</a>
+    </div>
+</div>
+
+<script src="https://static.opentok.com/v2/js/opentok.js" charset="utf-8"></script>
+
+<script charset="utf-8">
+	function initiateVideoCall() {
+		var apiKey = "45593632";
+		var sessionId = "2_MX40NTU5MzYzMn5-MTQ2MzgyMzIxNzM4Nn5JcTM5OU1mRnZlMmdlSEMxUlRhYUNUUmV-fg";
+		var token = "T1==cGFydG5lcl9pZD00NTU5MzYzMiZzaWc9N2YwYjE2Zjc2ZGE1MDEyOTBlM2NlZjBkOTBkZGJjN2ExNDgyM2I4ZjpzZXNzaW9uX2lkPTJfTVg0ME5UVTVNell6TW41LU1UUTJNemd5TXpJeE56TTRObjVKY1RNNU9VMW1SblpsTW1kbFNFTXhVbFJoWVVOVVVtVi1mZyZjcmVhdGVfdGltZT0xNDYzODIzMjY2Jm5vbmNlPTAuMDkzODM2ODM5Nzc2NDg2MTYmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTQ2NDQyODA2Mg==";
+
+		var session = OT.initSession(apiKey, sessionId)
+		  .on('streamCreated', function (event) {
+		  	//session.subscribe(event.stream);
+		  	session.subscribe(event.stream, 'divSubscriber', {
+		  		insertMode: 'append',
+		  		width: '60%',
+		  		height: '600px'
+		  	});
+		  	//$('#divSubscriber').children()
+		  })
+		  .connect(token, function (error) {
+		  	var publisher = OT.initPublisher('divPublisher', {
+		  		insertMode: 'append',
+		  		width: '150px',
+		  		height: '150px'
+		  	});
+		  	session.publish(publisher);
+		  });
+	}
+</script>
+
+<script>
+    $(document).ready(function () {
+        //alert('');
+    	$('#modal1').openModal();
+    	$('#btnAcceptPatientCall').on('click', function () {
+    		initiateVideoCall();
+    	});
+
+    	//$.post('/doctor/initiatevideoconference').done(function (html) {
+    	//	console.log(html);
+        //	$('#divVideoConference').html(html);
+        //});
+
+        $.post('/account/savesession').done().fail(function (ex) {
+            console.log('failed');
+            console.log(ex);
+        });
+
+    });
+</script>

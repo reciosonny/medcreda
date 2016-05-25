@@ -1,0 +1,48 @@
+﻿
+@{
+	ViewBag.Title = "Login";
+}
+
+
+<div class="container">
+	<div class="row">
+		<form class="col s12 m5" action="/Doctor/dashboard" method="post">
+			<br />
+			<br />
+			<br />
+
+			<div class="card-panel large">
+				<div class="row light-blue-text">
+					<div class="input-field col s6">
+						<input id="username" type="text" class="validate">
+						<label for="username">User Name</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="password" type="password" class="validate">
+						<label for="pass">Password</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col m12">
+						<p class="right-align">
+							<a id="btnLogin" href="#" class="btn btn-large waves-effect waves-light light-blue" type="button" name="action">Login<i class="material-icons right">send</i></a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+<script>
+	$('#btnLogin').on('click', function () {
+		var model = {
+			name: $('#username').val()
+		}
+		$.post('/account/savesession', model).done(function (data) {
+			location.href = '/doctor/dashboard';
+		});
+	});
+</script>
